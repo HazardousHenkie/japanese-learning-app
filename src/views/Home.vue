@@ -12,9 +12,7 @@ import HelloWorld from '@/components/HelloWorld.vue' // @ is an alias to /src
 console.log('test')
 type PropsType = {
     msg: any;
-};
-
-
+}
 
 export default defineComponent({
     name: 'Home',

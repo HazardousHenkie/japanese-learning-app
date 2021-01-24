@@ -17,10 +17,10 @@ module.exports = {
         ecmaVersion: 2020
     },
     rules: {
-        "@typescript-eslint/no-explicit-any": "warn",
+        '@typescript-eslint/no-explicit-any': 'warn',
         'no-console': 'warn',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-        "vue/no-multiple-template-root": "off",
+        'vue/no-multiple-template-root': 'off'
     },
     overrides: [
         {
