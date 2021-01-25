@@ -11,10 +11,7 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": false,
     "baseUrl": ".",
-        "noEmit": true,
-      
-        // "noImplicitAny": true,
-        // "strictPropertyInitialization": false,
+    "noEmit": true,
     "types": [
       "webpack-env",
       "jest"
