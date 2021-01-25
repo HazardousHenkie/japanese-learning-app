@@ -4,12 +4,11 @@ module.exports = {
         node: true
     },
     extends: [
-        'plugin:vue/recommended',
+        'plugin:vue/vue3-recommended',
         'eslint:recommended',
         '@vue/typescript/recommended',
         '@vue/prettier',
         '@vue/prettier/@typescript-eslint',
-        '@vue/typescript/recommended',
         'plugin:vue-a11y/base'
     ],
     plugins: ['vue-a11y'],
@@ -17,6 +16,7 @@ module.exports = {
         ecmaVersion: 2020
     },
     rules: {
+        'vue/valid-template-root': 'off',
         '@typescript-eslint/no-explicit-any': 'warn',
         'no-console': 'warn',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
