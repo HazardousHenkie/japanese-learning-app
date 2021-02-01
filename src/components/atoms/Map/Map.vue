@@ -1,5 +1,5 @@
 <template>
-    <div ref="mapDivRef" class="map"></div>
+    <StyledMap ref="mapDivRef" class="map"></StyledMap>
 </template>
 
 <script>
@@ -20,16 +20,15 @@ export default {
         const mapDivRef = ref(null)
 
         onMounted(() => {
-            const key = process.env.VUE_APP_GOOGLEMAPS_KEY
-
-            // create the script element to load
             const googleMapScript = document.createElement('SCRIPT')
             googleMapScript.setAttribute(
                 'src',
-                `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap`
+                `https://maps.googleapis.com/maps/api/js?key=${process.env.VUE_APP_GOOGLEMAPS_KEY}&callback=initMap`
             )
+
             googleMapScript.setAttribute('defer', '')
             googleMapScript.setAttribute('async', '')
+
             document.head.appendChild(googleMapScript)
         })
 
