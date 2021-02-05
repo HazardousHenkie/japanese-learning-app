@@ -1,3 +1,5 @@
 remove styled components
 add scss if necessary (with custom variables)
 fix stylelint
+move route strings to an utils file
+move router to seperate component

@@ -5,15 +5,20 @@
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex space-x-4">
                         <router-link
-                            class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2
+                            rounded-md text-sm font-medium"
                             to="/"
                             >Home</router-link
                         >
-                        |
                         <router-link
                             class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                             to="/about"
                             >About</router-link
+                        >
+                        <router-link
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                            to="/word"
+                            >Word</router-link
                         >
                     </div>
                 </div>
@@ -23,3 +28,6 @@
 
     <router-view />
 </template>
+
+<!-- TODO: bg-gray-900 text-white  active state-->
+<!-- TODO: text-gray-300 hover:bg-gray-700 hover:text-white  inactive state-->
