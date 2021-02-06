@@ -26,7 +26,11 @@
         </div>
     </nav>
 
-    <router-view />
+    <div class="container my-6 mx-auto px-6 md:px-12">
+        <div class="flex flex-wrap md:mx-12">
+            <router-view />
+        </div>
+    </div>
 </template>
 
 <!-- TODO: bg-gray-900 text-white  active state-->
