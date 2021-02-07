@@ -1,14 +1,15 @@
+import ROUTES from '@/utils/routes'
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
-        path: '/',
+        path: ROUTES.HOME,
         name: 'Home',
         component: Home
     },
     {
-        path: '/about',
+        path: ROUTES.ABOUT,
         name: 'About',
         component: () =>
             import(/* webpackChunkName: "about" */ '../views/About.vue')

@@ -51,7 +51,6 @@
     "sass": "^1.32.6",
     "sass-loader": "10.1.1",
     "stylelint": "^13.9.0",
-    "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-sass-guidelines": "^7.1.0",
     "typescript": "~3.9.3",
     "vue-jest": "^5.0.0-0"
