@@ -30,11 +30,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref } from 'vue'
+import { ref, Ref } from 'vue'
 import Card from '@/components/atoms/Card/Card.vue'
-import WORDS from '../utils/constants'
+import WORDS from '@/utils/constants'
 
-export default defineComponent({
+export default {
     name: 'Home',
     components: { Card },
     setup() {
@@ -55,5 +55,5 @@ export default defineComponent({
             nextStep
         }
     }
-})
+}
 </script>

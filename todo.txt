@@ -1,7 +1,5 @@
 
-move route strings to an utils file
-move router to seperate component
-navigation
+
 put online
 add test
 
