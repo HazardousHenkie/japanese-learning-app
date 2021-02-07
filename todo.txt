@@ -1,13 +1,14 @@
-remove styled components
-add scss if necessary (with custom variables)
-fix stylelint
+
 move route strings to an utils file
 move router to seperate component
-
+navigation
+put online
+add test
 
 // ideas
 add backend for all words and translation
 add automatic translation
-add n2 n3 word list
+add n2 n3 word list/randow wordt list
 add swiping
 add PWA
+comment to word
