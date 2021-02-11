@@ -1,7 +1,7 @@
 
-
-put online
 add test
+add 404 page
+add auth loader
 
 // ideas
 add backend for all words and translation

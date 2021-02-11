@@ -1,59 +1,53 @@
 <template>
-    <div class="relative w-full">
-        <p class="text-center text-4xl text-gray-300 mb-5">
-            {{ step + 1 }} / {{ words.length }}
-        </p>
-
+    <div v-if="!$auth.loading.value">
         <button
-            v-if="step !== 0"
-            @keyup.left="previousStep"
-            @click="previousStep"
+            v-if="!$auth.isAuthenticated.value"
+            @keyup.enter="login"
+            @click="login"
         >
-            <font-awesome-icon
-                icon="chevron-left"
-                class="text-4xl text-gray-300 absolute left-4 top-1/2"
-            />
+            Log in
         </button>
-        <Card :word="words[step]" :step="step" />
 
         <button
-            v-if="words.length > step + 1"
-            @keyup.right="nextStep"
-            @click="nextStep"
+            v-if="$auth.isAuthenticated.value"
+            @keyup.enter="logout"
+            @click="logout"
         >
-            <font-awesome-icon
-                icon="chevron-right"
-                class="text-4xl text-gray-300 absolute right-4 top-1/2"
-            />
+            Log out
         </button>
     </div>
 </template>
 
 <script lang="ts">
-import { ref, Ref } from 'vue'
-import Card from '@/components/atoms/Card/Card.vue'
-import WORDS from '@/utils/constants'
+import { inject } from 'vue'
+import { AuthPlugin } from '../components/templates/Auth'
+import { useRouter } from 'vue-router'
+import ROUTES from '@/utils/routes'
 
 export default {
     name: 'Home',
-    components: { Card },
     setup() {
-        const words = WORDS
-        const step: Ref<number> = ref(0)
+        const auth = inject('Auth') as AuthPlugin
+        const router = useRouter()
 
-        const previousStep = () => {
-            step.value--
+        if (auth.isAuthenticated.value) {
+            router.push(ROUTES.DASHBOARD)
         }
-        const nextStep = () => {
-            step.value++
+
+        const login = () => {
+            auth.loginWithRedirect()
+        }
+        const logout = () => {
+            auth.logout({
+                returnTo: window.location.origin
+            })
         }
 
         return {
-            words,
-            step,
-            previousStep,
-            nextStep
+            login,
+            logout
         }
-    }
+    },
+    methods: {}
 }
 </script>

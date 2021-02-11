@@ -18,9 +18,10 @@ module.exports = {
     rules: {
         'vue/valid-template-root': 'off',
         '@typescript-eslint/no-explicit-any': 'warn',
+        '@typescript-eslint/camelcase': 'off',
         'no-console': 'warn',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-        'vue/no-multiple-template-root': 'off'
+        'vue/no-multiple-template-root': 'off',
     },
     overrides: [
         {

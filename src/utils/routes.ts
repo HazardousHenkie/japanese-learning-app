@@ -1,6 +1,7 @@
 enum ROUTES {
     HOME = '/',
-    ABOUT = '/about'
+    ABOUT = '/about',
+    DASHBOARD = '/dashboard'
 }
 
 export default ROUTES
