@@ -31,7 +31,7 @@
 
 <script lang="ts">
 import { ref, Ref } from 'vue'
-import Card from '@/components/atoms/Card/Card.vue'
+import Card from '@/components/molecules/Card/Card.vue'
 import WORDS from '@/utils/constants'
 
 export default {

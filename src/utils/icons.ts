@@ -1,7 +1,8 @@
 import {
     faChevronLeft,
     faChevronRight,
-    faChevronDown
+    faChevronDown,
+    faCircleNotch
 } from '@fortawesome/free-solid-svg-icons'
 
-export default { faChevronLeft, faChevronRight, faChevronDown }
+export default { faChevronLeft, faChevronRight, faChevronDown, faCircleNotch }

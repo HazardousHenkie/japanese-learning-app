@@ -2,6 +2,8 @@
 add test
 add 404 page
 add auth loader
+add nice login/logout button page
+change login page
 
 // ideas
 add backend for all words and translation

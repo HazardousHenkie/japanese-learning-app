@@ -1,21 +1,5 @@
 <template>
-    <div v-if="!$auth.loading.value">
-        <button
-            v-if="!$auth.isAuthenticated.value"
-            @keyup.enter="login"
-            @click="login"
-        >
-            Log in
-        </button>
-
-        <button
-            v-if="$auth.isAuthenticated.value"
-            @keyup.enter="logout"
-            @click="logout"
-        >
-            Log out
-        </button>
-    </div>
+    Home
 </template>
 
 <script lang="ts">
@@ -28,26 +12,13 @@ export default {
     name: 'Home',
     setup() {
         const auth = inject('Auth') as AuthPlugin
+        const isAuthenticated = auth.isAuthenticated
+
         const router = useRouter()
 
-        if (auth.isAuthenticated.value) {
+        if (isAuthenticated) {
             router.push(ROUTES.DASHBOARD)
         }
-
-        const login = () => {
-            auth.loginWithRedirect()
-        }
-        const logout = () => {
-            auth.logout({
-                returnTo: window.location.origin
-            })
-        }
-
-        return {
-            login,
-            logout
-        }
-    },
-    methods: {}
+    }
 }
 </script>
