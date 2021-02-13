@@ -1,10 +1,4 @@
 {
-  "*.{ts,js.vue}": [
-    "yarn lint:fix",
-    "git add --force"
-  ],
-  "*.{ts,js.vue,json,md}": [
-    "yarn prettier:fix",
-    "git add --force"
-  ]
+    "*.{ts,js,vue}": ["yarn lint:fix", "git add --force"],
+    "*.{ts,js,vue,json,md}": ["yarn prettier:fix", "git add --force"]
 }
