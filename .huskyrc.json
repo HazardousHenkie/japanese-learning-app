@@ -2,6 +2,6 @@
   "hooks": {
     "post-checkout": "yarn",
     "pre-commit": "lint-staged",
-    "post-commit": "git status"
+    "post-commit": "test, git status"
   }
 }
