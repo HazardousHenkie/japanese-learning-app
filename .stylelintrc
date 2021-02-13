@@ -1,16 +1,16 @@
 {
   "extends": [
-     "stylelint-config-sass-guidelines",
+    "stylelint-config-sass-guidelines"
   ],
   "rules": {
+    "indentation": 4,
     "at-rule-no-unknown": [
-      true, 
+      true,
       {
-        "ignoreAtRules": [
-          "extends",
+        ignoreAtRules: [
           "tailwind"
-        ]
-      }
-    ]
+        ],
+      },
+    ],
   }
 }
