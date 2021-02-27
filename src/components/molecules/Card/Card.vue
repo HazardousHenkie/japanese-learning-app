@@ -47,11 +47,9 @@ export default {
         }
     },
     setup(
-        props: Readonly<
-            {
-                word: Word
-            } & {}
-        >
+        props: Readonly<{
+            word: Word
+        }>
     ) {
         const showMeaning: Ref<boolean> = ref(false)
 

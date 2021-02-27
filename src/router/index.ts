@@ -1,21 +1,21 @@
 import ROUTES from '@/utils/routes'
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Home from '../views/Home.vue'
+import Dashboard from '../views/Dashboard.vue'
 
 import routeGuard from '../components/templates/Auth/authGuard'
 
 const routes: Array<RouteRecordRaw> = [
     {
-        path: ROUTES.HOME,
-        name: 'Home',
-        component: Home
-    },
-    {
         path: ROUTES.DASHBOARD,
         name: 'Dashboard',
         beforeEnter: routeGuard,
+        component: Dashboard
+    },
+    {
+        path: ROUTES.ADD_WORD,
+        name: 'AddWord',
         component: () =>
-            import(/* webpackChunkName: "profile" */ '../views/Dashboard.vue')
+            import(/* webpackChunkName: "AddWord" */ '../views/AddWord.vue')
     },
     {
         path: ROUTES.ABOUT,
