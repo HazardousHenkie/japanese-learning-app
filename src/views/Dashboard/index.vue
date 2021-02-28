@@ -14,7 +14,7 @@
                 class="text-4xl text-gray-300 absolute left-4 top-1/2"
             />
         </button>
-        <Card :word="words[step]" :step="step" />
+        <card><word-card-content :word="words[step]" :step="step"/></card>
 
         <button
             v-if="words.length > step + 1"
@@ -31,12 +31,13 @@
 
 <script lang="ts">
 import { ref, Ref } from 'vue'
-import Card from '@/components/molecules/Card/Card.vue'
+import Card from '@/components/atoms/Card.vue'
 import WORDS from '@/utils/constants'
+import WordCardContent from './Molecules/WordCardContent.vue'
 
 export default {
     name: 'Dashboard',
-    components: { Card },
+    components: { Card, WordCardContent },
     setup() {
         const words = WORDS
         const step: Ref<number> = ref(0)

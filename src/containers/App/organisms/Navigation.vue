@@ -2,19 +2,19 @@
     <nav class="bg-gray-800">
         <div class="mx-auto px-2 sm:px-6 lg:px-8">
             <div class="relative flex items-center h-16">
-                <Routes />
+                <routes />
 
-                <LoginButton />
-                <LogoutButton />
+                <login-button />
+                <logout-button />
             </div>
         </div>
     </nav>
 </template>
 
 <script lang="ts">
-import Routes from '../../molecules/Routes/Routes.vue'
-import LoginButton from '../../molecules/LoginButton/index.vue'
-import LogoutButton from '../../molecules/LogoutButton/index.vue'
+import Routes from '../molecules/Routes.vue'
+import LoginButton from '../molecules/LoginButton.vue'
+import LogoutButton from '../molecules/LogoutButton.vue'
 
 export default {
     name: 'Navigation',

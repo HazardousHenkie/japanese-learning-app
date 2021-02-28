@@ -1,26 +1,44 @@
 <template>
-    <form @submit="onSubmit">
-        <!-- TODO: move to seperate component -->
-        <!-- TODO: add styling -->
-        <input v-model="word" name="word" />
-        <span>{{ wordError }}</span>
+    <card>
+        <form class="w-full md:w-3/6" @submit="onSubmit">
+            <dynamic-input
+                v-model="word"
+                name="word"
+                label="Word"
+                :error-message="wordError"
+            />
 
-        <input v-model="meaning" name="meaning" />
-        <span>{{ meaningError }}</span>
+            <dynamic-input
+                v-model="meaning"
+                name="meaning"
+                :error-message="meaningError"
+            />
 
-        <input v-model="reading" name="reading" />
-        <span>{{ readingError }}</span>
+            <dynamic-input
+                v-model="reading"
+                name="reading"
+                :error-message="readingError"
+            />
 
-        <button type="submit" :disabled="isSubmitting">Submit</button>
-    </form>
+            <dynamic-button type="submit" :disabled="isSubmitting">
+                Submit
+            </dynamic-button>
+        </form>
+    </card>
 </template>
 
 <script lang="ts">
-import * as yup from 'yup'
 import { useForm, useField } from 'vee-validate'
+import * as yup from 'yup'
+
+import Input from '@/components/molecules/Input.vue'
+import Card from '@/components/atoms/Card.vue'
+import Button from '@/components/atoms/Button.vue'
 
 export default {
     name: 'AddWord',
+    components: { Card, 'dynamic-input': Input, 'dynamic-button': Button },
+
     setup() {
         const schema = yup.object({
             word: yup.string().required(),

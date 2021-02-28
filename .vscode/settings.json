@@ -3,6 +3,5 @@
         "source.fixAll.eslint": true
     },
     "css.validate": false,
-    "scss.validate": false,
-    "stylelint.enable": true
+    "scss.validate": false
 }

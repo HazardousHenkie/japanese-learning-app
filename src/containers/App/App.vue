@@ -16,8 +16,8 @@
 import { inject } from 'vue'
 import { AuthPlugin } from '@/components/templates/Auth'
 
-import FullPageLoader from '@/components/molecules/FullPageLoader/FullPageLoader.vue'
-import Navigation from './organisms/Navigation/Navigation.vue'
+import FullPageLoader from '@/components/molecules/FullPageLoader.vue'
+import Navigation from './organisms/Navigation.vue'
 
 export default {
     name: 'App',
