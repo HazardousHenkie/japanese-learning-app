@@ -34,6 +34,8 @@ import * as yup from 'yup'
 import Input from '@/components/molecules/Input.vue'
 import Card from '@/components/atoms/Card.vue'
 import Button from '@/components/atoms/Button.vue'
+import api from '@/api'
+import Word from '@/types/words'
 
 export default {
     name: 'AddWord',
@@ -50,8 +52,17 @@ export default {
             validationSchema: schema
         })
 
-        const onSubmit = handleSubmit(formValues => {
-            console.log(formValues)
+        const onSubmit = handleSubmit(async formValues => {
+            //TODO: add to new function?
+            // https://labs.thisdot.co/blog/vue-3-composition-api-do-you-really-need-it
+            // https://blog.logrocket.com/how-to-build-applications-with-vues-composition-api/
+            // TODO: add token
+            try {
+                // TODO: Add loading
+                await api().v1.Words.create('', formValues as Word)
+            } catch (error) {
+                console.error(error)
+            }
         })
 
         const { value: word, errorMessage: wordError } = useField('word')

@@ -24,7 +24,6 @@
 <script lang="ts">
 export default {
     name: 'Input',
-    inject: ['modelValue'],
     props: {
         name: {
             type: String,
