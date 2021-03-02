@@ -132,6 +132,7 @@ const setupAuth = async (
         ...options,
         domain: process.env.VUE_APP_AUTH0_DOMAIN,
         client_id: process.env.VUE_APP_AUTH0_CLIENT_ID,
+        audience: process.env.VUE_APP_AUTH0_API_AUDIENCE,
         redirect_uri: redirectUri ?? window.location.origin,
         useRefreshTokens: true
     })

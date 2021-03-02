@@ -14,6 +14,7 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: ROUTES.ADD_WORD,
         name: 'AddWord',
+        beforeEnter: routeGuard,
         component: () =>
             import(
                 /* webpackChunkName: "AddWord" */ '../views/AddWord/index.vue'
