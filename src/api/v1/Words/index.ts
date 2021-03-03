@@ -8,19 +8,19 @@ const Words = (baseUrl: string) => {
     const url = `${baseUrl}/words`
     return {
         getWords: async (accessToken: string) => {
-            await Axios(accessToken).get(url)
+            return await Axios(accessToken).get(url)
         },
         getSingleWord: async (accessToken: string, wordId: string) => {
-            await Axios(accessToken).get(`${url}/${wordId}`)
+            return await Axios(accessToken).get(`${url}/${wordId}`)
         },
         create: async (accessToken: string, data: WordPostRequest) => {
-            await Axios(accessToken).post(url, data)
+            return await Axios(accessToken).post(url, data)
         },
         patch: async (accessToken: string, data: WordPatchRequest) => {
-            await Axios(accessToken).patch(url, data)
+            return await Axios(accessToken).patch(url, data)
         },
         delete: async (accessToken: string, wordId: string) => {
-            await Axios(accessToken).delete(`${url}/${wordId}`)
+            return await Axios(accessToken).delete(`${url}/${wordId}`)
         }
     }
 }

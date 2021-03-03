@@ -1,32 +1,33 @@
 import { reactive } from 'vue'
 
 import { authPlugin } from '@/components/templates/Auth'
-import Word from '@/types/words'
+
 import { AxiosError } from 'axios'
 
-// TODO: Change any
-// TODO: pass interface so it's generic
-// TODO: Move this somewhere else?
-export const createUpdateApiCall = async (
-    apiCall: any,
-    requestData?: Word | string
+// TODO: investigate function call can we create one?
+const doApiCall = async <DataType>(
+    apiCall: Function,
+    requestData?: DataType
 ) => {
     interface GetApiState {
-        data: Record<string, string | number> | null
+        data: DataType | undefined
         loading: boolean
         errored: boolean | AxiosError
     }
 
     const state: GetApiState = reactive({
-        data: null,
+        data: undefined,
         loading: true,
         errored: false
     })
 
     try {
         const accessToken = await authPlugin.getTokenSilently()
+        const response = await apiCall(
+            accessToken,
+            (requestData as DataType) && (requestData as DataType)
+        )
 
-        const response = await apiCall(accessToken, requestData && requestData)
         state.data = response.data
     } catch (error) {
         state.errored = error
@@ -36,3 +37,5 @@ export const createUpdateApiCall = async (
 
     return state
 }
+
+export default doApiCall
