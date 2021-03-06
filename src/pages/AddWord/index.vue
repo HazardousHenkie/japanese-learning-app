@@ -1,43 +1,21 @@
 <template>
-    <card>
-        <form class="w-full md:w-3/6" @submit="onSubmit">
-            <h1 class="text-3xl mb-6 text-gray-300">Add word</h1>
-            <dynamic-input
-                v-model="word"
-                name="word"
-                label="Word"
-                :error-message="wordError"
-            />
-
-            <dynamic-input
-                v-model="meaning"
-                name="meaning"
-                label="Meaning"
-                :error-message="meaningError"
-            />
-
-            <dynamic-input
-                v-model="reading"
-                name="reading"
-                label="Meaning"
-                :error-message="readingError"
-            />
-
-            <dynamic-button type="submit" :loading="isSubmitting">
-                Submit
-            </dynamic-button>
-        </form>
-    </card>
+    <add-word-template
+        :on-submit="onSubmit"
+        :is-submitting="isSubmitting"
+        :word="word"
+        :word-error="wordError"
+        :meaning="meaning"
+        :meaning-error="meaningError"
+        :reading="reading"
+        :reading-error="readingError"
+    />
 </template>
 
 <script lang="ts">
-// TODO: clear form when succesfull
 import { useForm, useField } from 'vee-validate'
 import * as yup from 'yup'
 
-import Input from '@/components/molecules/Input.vue'
-import Card from '@/components/atoms/Card.vue'
-import Button from '@/components/atoms/Button.vue'
+import AddWordTemplate from '@/templates/AddWord/index.vue'
 import doAPiCall from '@/utils/requestUtils.ts'
 
 import api from '@/api'
@@ -45,7 +23,7 @@ import Word from '@/types/words'
 
 export default {
     name: 'AddWord',
-    components: { Card, 'dynamic-input': Input, 'dynamic-button': Button },
+    components: { AddWordTemplate },
 
     setup() {
         const schema = yup.object({

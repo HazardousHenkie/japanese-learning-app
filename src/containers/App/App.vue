@@ -14,10 +14,10 @@
 
 <script lang="ts">
 import { inject } from 'vue'
-import { AuthPlugin } from '@/components/templates/Auth'
+import { AuthPlugin } from '@/Auth'
 
-import FullPageLoader from '@/components/molecules/FullPageLoader.vue'
-import Navigation from './organisms/Navigation.vue'
+import FullPageLoader from '@/molecules/FullPageLoader.vue'
+import Navigation from '@/organisms/Navigation.vue'
 
 export default {
     name: 'App',

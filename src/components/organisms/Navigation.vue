@@ -12,9 +12,9 @@
 </template>
 
 <script lang="ts">
-import Routes from '../molecules/Routes.vue'
-import LoginButton from '../molecules/LoginButton.vue'
-import LogoutButton from '../molecules/LogoutButton.vue'
+import Routes from '@/molecules/Routes.vue'
+import LoginButton from '@/molecules/LoginButton.vue'
+import LogoutButton from '@/molecules/LogoutButton.vue'
 
 export default {
     name: 'Navigation',

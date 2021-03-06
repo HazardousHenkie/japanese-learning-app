@@ -31,7 +31,7 @@
 
 <script lang="ts">
 import { ref, Ref } from 'vue'
-import Card from '@/components/atoms/Card.vue'
+import Card from '@/atoms/Card.vue'
 import WORDS from '@/utils/constants'
 import WordCardContent from './Molecules/WordCardContent.vue'
 
