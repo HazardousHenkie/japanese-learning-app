@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './containers/App/App.vue'
 import router from './router'
 import store from './store'
-import setupAuth from './components/templates/Auth'
+import setupAuth from './Auth'
 
 import './styles/index.scss'
 

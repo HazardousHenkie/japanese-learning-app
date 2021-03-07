@@ -1,27 +1,24 @@
 <template>
-    <card>
-        <form class="w-full md:w-3/6" @submit="onSubmit">
-            <h1 class="text-3xl mb-6 text-gray-300">{{ title }}</h1>
+    <form class="w-full md:w-3/6" @submit="onSubmit">
+        <h1 class="text-3xl mb-6 text-gray-300">{{ title }}</h1>
 
-            <slot />
+        <slot />
 
-            <dynamic-button type="submit" :loading="isSubmitting">
-                {{ buttonText }}
-            </dynamic-button>
-        </form>
-    </card>
+        <dynamic-button type="submit" :loading="isSubmitting">
+            {{ buttonText }}
+        </dynamic-button>
+    </form>
 </template>
 
 <script lang="ts">
-import Card from '@/atoms/Card.vue'
-import Button from '@/atoms/Button.vue'
+import Button from '@/components/atoms/Button.vue'
 
 export default {
     name: 'AddWordTemplate',
-    components: { Card, 'dynamic-button': Button },
+    components: { 'dynamic-button': Button },
     props: {
         onSubmit: {
-            type: () => Promise,
+            type: Function,
             require: true,
             default: () => null
         },

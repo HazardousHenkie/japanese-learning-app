@@ -1,10 +1,9 @@
 import { reactive } from 'vue'
 
-import { authPlugin } from '@/components/templates/Auth'
+import { authPlugin } from '@/Auth'
 
 import { AxiosError } from 'axios'
 
-// TODO: investigate function call can we create one?
 const doApiCall = async <DataType>(
     apiCall: Function,
     requestData?: DataType

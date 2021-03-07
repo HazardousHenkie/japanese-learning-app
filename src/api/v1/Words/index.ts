@@ -13,7 +13,7 @@ const Words = (baseUrl: string) => {
         getSingleWord: async (accessToken: string, wordId: string) => {
             return await Axios(accessToken).get(`${url}/${wordId}`)
         },
-        create: async (accessToken: string, data: WordPostRequest) => {
+        post: async (accessToken: string, data: WordPostRequest) => {
             return await Axios(accessToken).post(url, data)
         },
         patch: async (accessToken: string, data: WordPatchRequest) => {

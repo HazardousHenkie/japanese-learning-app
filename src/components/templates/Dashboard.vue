@@ -1,4 +1,6 @@
 <template>
+    {{ step }}
+
     <div class="relative w-full">
         <p class="text-center text-4xl text-gray-300 mb-5">
             {{ step + 1 }} / {{ words.length }}
@@ -14,7 +16,9 @@
                 class="text-4xl text-gray-300 absolute left-4 top-1/2"
             />
         </button>
-        <card><word-card-content :word="words[step]" :step="step"/></card>
+        <card>
+            <word-card-content :word="words[step]" :step="step" />
+        </card>
 
         <button
             v-if="words.length > step + 1"
@@ -30,30 +34,38 @@
 </template>
 
 <script lang="ts">
-import { ref, Ref } from 'vue'
-import Card from '@/atoms/Card.vue'
-import WORDS from '@/utils/constants'
-import WordCardContent from './Molecules/WordCardContent.vue'
+import { PropType } from 'vue'
+import Card from '@/components/atoms/Card.vue'
+import WordCardContent from '@/components/organisms/WordCard.vue'
+import Word from '@/types/words'
 
 export default {
-    name: 'Dashboard',
+    name: 'DashboardTemplate',
     components: { Card, WordCardContent },
-    setup() {
-        const words = WORDS
-        const step: Ref<number> = ref(0)
-
-        const previousStep = () => {
-            step.value--
-        }
-        const nextStep = () => {
-            step.value++
-        }
-
-        return {
-            words,
-            step,
-            previousStep,
-            nextStep
+    props: {
+        words: {
+            type: Object as PropType<Word>,
+            require: true,
+            default: () => ({
+                word: '',
+                reading: '',
+                meaning: ''
+            })
+        },
+        step: {
+            type: Number,
+            required: true,
+            default: 0
+        },
+        previousStep: {
+            type: Function,
+            required: true,
+            default: () => null
+        },
+        nextStep: {
+            type: Function,
+            required: true,
+            default: () => null
         }
     }
 }

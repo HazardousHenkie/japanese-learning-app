@@ -22,7 +22,8 @@ module.exports = {
         'no-console': 'warn',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         'vue/no-multiple-template-root': 'off',
-        'vue-a11y/label-has-for': 'off'
+        'vue-a11y/label-has-for': 'off',
+        'vue-a11y/form-has-label': 'off'
     },
     overrides: [
         {

@@ -1,6 +1,6 @@
 import ROUTES from '@/utils/routes'
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Dashboard from '../pages/Dashboard/index.vue'
+import Dashboard from '../pages/Dashboard.vue'
 
 import routeGuard from '../Auth/authGuard'
 
@@ -16,15 +16,13 @@ const routes: Array<RouteRecordRaw> = [
         name: 'AddWord',
         beforeEnter: routeGuard,
         component: () =>
-            import(
-                /* webpackChunkName: "AddWord" */ '../pages/AddWord/index.vue'
-            )
+            import(/* webpackChunkName: "AddWord" */ '../pages/AddWord.vue')
     },
     {
         path: ROUTES.ABOUT,
         name: 'About',
         component: () =>
-            import(/* webpackChunkName: "about" */ '../pages/About/index.vue')
+            import(/* webpackChunkName: "about" */ '../pages/About.vue')
     }
 ]
 

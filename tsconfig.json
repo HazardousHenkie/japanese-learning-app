@@ -21,7 +21,7 @@
         "src/**/*.ts",
         "src/**/*.vue",
         "tests/**/*.ts",
-        "src/components/templates/Auth/index.js"
+        "src/Auth/index.js"
     ],
     "exclude": ["node_modules"]
 }

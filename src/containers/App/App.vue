@@ -1,8 +1,8 @@
 <template>
-    <FullPageLoader v-if="authenticationIsloading" />
+    <full-page-Loader v-if="authenticationIsloading" />
 
     <div v-else>
-        <Navigation />
+        <navigation />
 
         <div class="container my-6 mx-auto px-6 md:px-12">
             <div class="flex flex-wrap md:mx-12">
@@ -16,8 +16,8 @@
 import { inject } from 'vue'
 import { AuthPlugin } from '@/Auth'
 
-import FullPageLoader from '@/molecules/FullPageLoader.vue'
-import Navigation from '@/organisms/Navigation.vue'
+import FullPageLoader from '@/components/molecules/FullPageLoader.vue'
+import Navigation from '@/components/organisms/Navigation.vue'
 
 export default {
     name: 'App',

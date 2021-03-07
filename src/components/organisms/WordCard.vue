@@ -28,7 +28,7 @@ type Word = {
 }
 
 export default {
-    name: 'WordCardContent',
+    name: 'WordCard',
     props: {
         word: {
             type: Object as PropType<Word>,

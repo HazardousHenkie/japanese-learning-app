@@ -1,10 +1,9 @@
 
 add test
 add 404 page
-add nice login/logout button page
-change login page
-
-//fix error
+create api types and use those
+delete function types
+fix vetur or have ok plugin
 
 // ideas
 add backend for all words and translation

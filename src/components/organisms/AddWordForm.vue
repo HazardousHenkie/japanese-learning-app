@@ -1,22 +1,27 @@
 <template>
     <card>
-        <dynamic-form title="Add word" button-text="submit">
-            <dynamic-input
-                :value="modelValue"
+        <dynamic-form
+            title="Add word"
+            button-text="submit"
+            :on-submit="onSubmit"
+            :is-submitting="isSubmitting"
+        >
+            <input-field
+                v-model="word"
                 name="word"
                 label="Word"
                 :error-message="wordError"
             />
 
-            <dynamic-input
-                :value="modelValue"
+            <input-field
+                v-model="meaning"
                 name="meaning"
                 label="Meaning"
                 :error-message="meaningError"
             />
 
-            <dynamic-input
-                :value="modelValue"
+            <input-field
+                v-model="reading"
                 name="reading"
                 label="Meaning"
                 :error-message="readingError"
@@ -26,58 +31,58 @@
 </template>
 
 <script lang="ts">
-import Input from '@/molecules/Input.vue'
-import Card from '@/atoms/Card.vue'
-import Form from '@molecules/form.vue'
+import { useForm, useField } from 'vee-validate'
+import * as yup from 'yup'
+
+import Card from '@/components/atoms/Card.vue'
+import Form from '@/components/molecules/Form.vue'
+import InputField from '@/components/molecules/InputField.vue'
 
 export default {
     name: 'AddWordTemplate',
-    components: { Card, 'dynamic-input': Input, 'dynamic-form': Form },
+    components: {
+        Card,
+        'dynamic-form': Form,
+        InputField
+    },
     props: {
-        onSubmit: {
-            type: () => Promise,
+        submitFunction: {
+            type: Function,
             require: true,
             default: () => null
-        },
-        isSubmitting: {
-            type: Boolean,
-            require: false,
-            default: false
-        },
-        modelValue: {
-            type: String,
-            require: true,
-            default: ''
-        },
-        word: {
-            type: String,
-            require: true,
-            default: ''
-        },
-        wordError: {
-            type: String,
-            require: false,
-            default: ''
-        },
-        meaning: {
-            type: String,
-            require: true,
-            default: ''
-        },
-        meaningError: {
-            type: String,
-            require: false,
-            default: ''
-        },
-        reading: {
-            type: String,
-            require: true,
-            default: ''
-        },
-        readingError: {
-            type: String,
-            require: false,
-            default: ''
+        }
+    },
+    setup(props: Readonly<{ submitFunction: Function }>) {
+        const schema = yup.object({
+            word: yup.string().required(),
+            meaning: yup.string().required(),
+            reading: yup.string().required()
+        })
+        const { handleSubmit, isSubmitting } = useForm({
+            validationSchema: schema
+        })
+
+        const onSubmit = handleSubmit(async (formValues, { resetForm }) => {
+            await props.submitFunction(formValues)
+            resetForm()
+        })
+        const { value: word, errorMessage: wordError } = useField('word')
+        const { value: meaning, errorMessage: meaningError } = useField(
+            'meaning'
+        )
+        const { value: reading, errorMessage: readingError } = useField(
+            'reading'
+        )
+
+        return {
+            onSubmit,
+            isSubmitting,
+            word,
+            wordError,
+            meaning,
+            meaningError,
+            reading,
+            readingError
         }
     }
 }

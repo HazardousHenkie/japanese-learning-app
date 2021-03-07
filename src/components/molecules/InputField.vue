@@ -1,29 +1,23 @@
 <template>
     <div class="flex flex-col pb-6">
-        <label
-            :for="name"
-            class="mb-1 text-md font-medium tracking-wide text-gray-300"
-            >{{ label }}</label
-        >
-        <input
-            class="relative w-full border rounded placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2 pr-2 pl-2"
-            type="text"
-            :value="modelValue"
+        <custom-label :name="name" :label="label" />
+
+        <custom-input
             :name="name"
+            :value="modelValue"
             @input="$emit('update:modelValue', $event.target.value)"
         />
-
-        <span
-            class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"
-            :if="errorMessage !== ''"
-            >{{ errorMessage }}</span
-        >
+        <error-message :error-message="errorMessage" />
     </div>
 </template>
 
 <script lang="ts">
+import ErrorMessage from '@/components/atoms/ErrorMessage.vue'
+import Label from '@/components/atoms/Label.vue'
+import Input from '@/components/atoms/Input.vue'
 export default {
-    name: 'Input',
+    name: 'InputField',
+    components: { ErrorMessage, 'custom-label': Label, 'custom-input': Input },
     props: {
         name: {
             type: String,
@@ -46,7 +40,6 @@ export default {
             default: ''
         }
     },
-
     emits: ['update:modelValue']
 }
 </script>
