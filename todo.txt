@@ -4,6 +4,7 @@ add 404 page
 create api types and use those
 delete function types
 fix vetur or have ok plugin
+add loader to dashboard ? suspense?
 
 // ideas
 add backend for all words and translation

@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import AddWordTemplate from '@/components/templates/AddWord.vue'
+import AddWordTemplate from '@/components/templates/AddWord/index.vue'
 import doApiCall from '@/utils/requestUtils.ts'
 
 import api from '@/api'

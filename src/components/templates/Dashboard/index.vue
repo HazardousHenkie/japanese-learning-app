@@ -1,6 +1,4 @@
 <template>
-    {{ step }}
-
     <div class="relative w-full">
         <p class="text-center text-4xl text-gray-300 mb-5">
             {{ step + 1 }} / {{ words.length }}
@@ -34,9 +32,9 @@
 </template>
 
 <script lang="ts">
-import { PropType } from 'vue'
+import { PropType, Ref, ref } from 'vue'
 import Card from '@/components/atoms/Card.vue'
-import WordCardContent from '@/components/organisms/WordCard.vue'
+import WordCardContent from './components/organisms/WordCard.vue'
 import Word from '@/types/words'
 
 export default {
@@ -51,21 +49,22 @@ export default {
                 reading: '',
                 meaning: ''
             })
-        },
-        step: {
-            type: Number,
-            required: true,
-            default: 0
-        },
-        previousStep: {
-            type: Function,
-            required: true,
-            default: () => null
-        },
-        nextStep: {
-            type: Function,
-            required: true,
-            default: () => null
+        }
+    },
+    setup() {
+        const step: Ref<number> = ref(0)
+
+        const previousStep = () => {
+            step.value--
+        }
+        const nextStep = () => {
+            step.value++
+        }
+
+        return {
+            step,
+            previousStep,
+            nextStep
         }
     }
 }

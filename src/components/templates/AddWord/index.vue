@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import AddWordForm from '@/components/organisms/AddWordForm.vue'
+import AddWordForm from './components/organisms/AddWordForm.vue'
 
 export default {
     name: 'AddWordTemplate',

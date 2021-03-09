@@ -1,16 +1,10 @@
 <template>
-    <dashboard-template
-        :words="words"
-        :step="step"
-        :previous-step="previousStep"
-        :next-step="nextStep"
-    />
+    <dashboard-template :words="words" />
 </template>
 
 <script lang="ts">
-import { ref, Ref } from 'vue'
-
-import DashboardTemplate from '@/components/templates/Dashboard.vue'
+import { Ref, ref, onMounted } from 'vue'
+import DashboardTemplate from '@/components/templates/Dashboard/index.vue'
 
 import doApiCall from '@/utils/requestUtils.ts'
 
@@ -20,28 +14,18 @@ import Word from '@/types/words'
 export default {
     name: 'Dashboard',
     components: { DashboardTemplate },
-    async setup() {
-        const step: Ref<number> = ref(0)
+    setup() {
+        const words: Ref<Word[] | undefined> = ref([])
+        onMounted(async () => {
+            const { data } = await doApiCall<{ results: Word[] }>(
+                api().v1.Words.getWords
+            )
 
-        const { data } = await doApiCall<{ results: Word[] }>(
-            api().v1.Words.getWords
-        )
-
-        console.log(data?.results)
-        const words = data
-
-        const previousStep = () => {
-            step.value--
-        }
-        const nextStep = () => {
-            step.value++
-        }
+            words.value = data?.results
+        })
 
         return {
-            words,
-            step,
-            previousStep,
-            nextStep
+            words
         }
     }
 }
