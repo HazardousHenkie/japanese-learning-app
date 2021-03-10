@@ -38,6 +38,11 @@ export default {
                 reading: '',
                 meaning: ''
             })
+        },
+        step: {
+            type: Number,
+            required: true,
+            default: 0
         }
     },
     setup(
