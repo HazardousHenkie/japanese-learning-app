@@ -12,6 +12,13 @@ const routes: Array<RouteRecordRaw> = [
         component: Dashboard
     },
     {
+        path: ROUTES.MY_WORDS,
+        name: 'MyWords',
+        beforeEnter: routeGuard,
+        component: () =>
+            import(/* webpackChunkName: "AddWord" */ '@/pages/MyWords.vue')
+    },
+    {
         path: ROUTES.ADD_WORD,
         name: 'AddWord',
         beforeEnter: routeGuard,
