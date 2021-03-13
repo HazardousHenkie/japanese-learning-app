@@ -1,5 +1,5 @@
 <template>
-    <my-words-template :words="words" />
+    <my-words-template :words="words" :delete-function="deleteFunction" />
 </template>
 
 <script lang="ts">
@@ -24,8 +24,17 @@ export default {
             words.value = data?.results
         })
 
+        const deleteFunction = async (wordId: string) => {
+            await doApiCall<string>(api().v1.Words.delete, wordId)
+
+            if (words.value) {
+                words.value = words.value.filter(word => word.id !== wordId)
+            }
+        }
+
         return {
-            words
+            words,
+            deleteFunction
         }
     }
 }
