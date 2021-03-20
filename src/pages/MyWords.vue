@@ -31,7 +31,6 @@ export default {
                 words.value = words.value.filter(word => word.id !== wordId)
             }
         }
-
         return {
             words,
             deleteFunction

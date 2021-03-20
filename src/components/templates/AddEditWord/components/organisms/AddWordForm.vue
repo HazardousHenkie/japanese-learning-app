@@ -1,7 +1,7 @@
 <template>
     <card>
         <dynamic-form
-            title="Add word"
+            :title="id ? 'Edit Word' : 'Add word'"
             button-text="submit"
             :on-submit="onSubmit"
             :is-submitting="isSubmitting"
@@ -37,6 +37,8 @@ import * as yup from 'yup'
 import Card from '@/components/atoms/Card.vue'
 import Form from '@/components/molecules/Form.vue'
 import InputField from '@/components/molecules/InputField.vue'
+import { PropType, watch } from '@vue/runtime-core'
+import Word from '@/types/words'
 
 export default {
     name: 'AddWordTemplate',
@@ -46,24 +48,56 @@ export default {
         InputField
     },
     props: {
-        submitFunction: {
+        id: {
+            type: String,
+            require: true,
+            default: null
+        },
+        editWord: {
+            type: Object as PropType<Word>,
+            required: false,
+            default: undefined
+        },
+        addFunction: {
+            type: Function,
+            require: true,
+            default: () => null
+        },
+        editFunction: {
             type: Function,
             require: true,
             default: () => null
         }
     },
-    setup(props: Readonly<{ submitFunction: Function }>) {
+    setup(props) {
         const schema = yup.object({
             word: yup.string().required(),
             meaning: yup.string().required(),
             reading: yup.string().required()
         })
-        const { handleSubmit, isSubmitting } = useForm({
+
+        const { handleSubmit, isSubmitting, setValues } = useForm({
+            initialValues: { ...props.editWord },
             validationSchema: schema
         })
 
+        watch(
+            () => props.editWord,
+            () => {
+                if (props.editWord) {
+                    setValues({
+                        ...props.editWord
+                    })
+                }
+            }
+        )
+
         const onSubmit = handleSubmit(async (formValues, { resetForm }) => {
-            await props.submitFunction(formValues)
+            if (props.id) {
+                await props.addFunction(formValues)
+            } else {
+                await props.editFunction(formValues)
+            }
             resetForm()
         })
         const { value: word, errorMessage: wordError } = useField('word')

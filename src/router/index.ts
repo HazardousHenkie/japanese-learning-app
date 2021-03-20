@@ -23,7 +23,18 @@ const routes: Array<RouteRecordRaw> = [
         name: 'AddWord',
         beforeEnter: routeGuard,
         component: () =>
-            import(/* webpackChunkName: "AddWord" */ '@/pages/AddWord.vue')
+            import(
+                /* webpackChunkName: "AddEditWord" */ '@/pages/AddEditWord.vue'
+            )
+    },
+    {
+        path: ROUTES.EDIT_WORD,
+        name: 'EditWord',
+        beforeEnter: routeGuard,
+        component: () =>
+            import(
+                /* webpackChunkName: "AddEditWord" */ '@/pages/AddEditWord.vue'
+            )
     },
     {
         path: ROUTES.ABOUT,
