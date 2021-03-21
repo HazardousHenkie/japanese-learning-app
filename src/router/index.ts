@@ -1,8 +1,9 @@
-import ROUTES from '@/utils/routes'
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Dashboard from '@/pages/Dashboard.vue'
 
+import Dashboard from '@/pages/Dashboard.vue'
 import routeGuard from '@/Auth/authGuard'
+
+import ROUTES from '@/utils/routes'
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -23,24 +24,28 @@ const routes: Array<RouteRecordRaw> = [
         name: 'AddWord',
         beforeEnter: routeGuard,
         component: () =>
-            import(
-                /* webpackChunkName: "AddEditWord" */ '@/pages/AddEditWord.vue'
-            )
+            import(/* webpackChunkName: "AddWord" */ '@/pages/AddEditWord.vue')
     },
     {
-        path: ROUTES.EDIT_WORD,
+        path: `${ROUTES.EDIT_WORD}/:id`,
         name: 'EditWord',
         beforeEnter: routeGuard,
         component: () =>
-            import(
-                /* webpackChunkName: "AddEditWord" */ '@/pages/AddEditWord.vue'
-            )
+            import(/* webpackChunkName: "EditWord" */ '@/pages/AddEditWord.vue')
     },
     {
         path: ROUTES.ABOUT,
         name: 'About',
         component: () =>
             import(/* webpackChunkName: "about" */ '@/pages/About.vue')
+    },
+    {
+        path: '/:catchAll(.*)',
+        name: '404',
+        component: () =>
+            import(
+                /* webpackChunkName: "PageNotFound" */ '@/pages/PageNotFound.vue'
+            )
     }
 ]
 

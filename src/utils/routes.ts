@@ -3,7 +3,7 @@ enum ROUTES {
     ABOUT = '/about',
     MY_WORDS = '/my-words',
     ADD_WORD = '/add-word',
-    EDIT_WORD = '/edit-word/:id'
+    EDIT_WORD = '/edit-word'
 }
 
 export default ROUTES

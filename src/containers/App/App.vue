@@ -2,7 +2,7 @@
     <full-page-Loader v-if="authenticationIsloading" />
 
     <div v-else>
-        <navigation />
+        <navigation v-if="$router.currentRoute._rawValue.name !== '404'" />
 
         <div class="container my-6 mx-auto px-6 md:px-12">
             <div class="flex flex-wrap md:mx-12">

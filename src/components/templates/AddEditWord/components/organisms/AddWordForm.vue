@@ -39,6 +39,8 @@ import Form from '@/components/molecules/Form.vue'
 import InputField from '@/components/molecules/InputField.vue'
 import { PropType, watch } from '@vue/runtime-core'
 import Word from '@/types/words'
+import ROUTES from '@/utils/routes'
+import router from '@/router'
 
 export default {
     name: 'AddWordTemplate',
@@ -69,7 +71,14 @@ export default {
             default: () => null
         }
     },
-    setup(props) {
+    setup(
+        props: Readonly<{
+            id: string
+            editWord: Word
+            addFunction: Function
+            editFunction: Function
+        }>
+    ) {
         const schema = yup.object({
             word: yup.string().required(),
             meaning: yup.string().required(),
@@ -94,11 +103,13 @@ export default {
 
         const onSubmit = handleSubmit(async (formValues, { resetForm }) => {
             if (props.id) {
-                await props.addFunction(formValues)
-            } else {
                 await props.editFunction(formValues)
+            } else {
+                await props.addFunction(formValues)
+                resetForm()
             }
-            resetForm()
+
+            router.push(ROUTES.MY_WORDS)
         })
         const { value: word, errorMessage: wordError } = useField('word')
         const { value: meaning, errorMessage: meaningError } = useField(

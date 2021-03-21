@@ -4,9 +4,9 @@ import { authPlugin } from '@/Auth'
 
 import { AxiosError } from 'axios'
 
-const doApiCall = async <DataType>(
+const doApiCall = async <DataType, RequestType = undefined>(
     apiCall: Function,
-    requestData?: DataType
+    requestData?: RequestType
 ) => {
     interface GetApiState {
         data: DataType | undefined
@@ -22,10 +22,7 @@ const doApiCall = async <DataType>(
 
     try {
         const accessToken = await authPlugin.getTokenSilently()
-        const response = await apiCall(
-            accessToken,
-            (requestData as DataType) && (requestData as DataType)
-        )
+        const response = await apiCall(accessToken, requestData && requestData)
 
         state.data = response.data
     } catch (error) {

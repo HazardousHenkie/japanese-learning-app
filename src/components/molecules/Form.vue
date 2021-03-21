@@ -1,6 +1,6 @@
 <template>
     <form class="w-full md:w-3/6" @submit="onSubmit">
-        <h1 class="text-3xl mb-6 text-gray-300">{{ title }}</h1>
+        <custom-title class="mb-6" :title="title" />
 
         <slot />
 
@@ -12,10 +12,11 @@
 
 <script lang="ts">
 import Button from '@/components/atoms/Button.vue'
+import Title from '../atoms/Title.vue'
 
 export default {
     name: 'AddWordTemplate',
-    components: { 'dynamic-button': Button },
+    components: { 'dynamic-button': Button, 'custom-title': Title },
     props: {
         onSubmit: {
             type: Function,
