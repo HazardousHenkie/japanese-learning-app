@@ -1,0 +1,3 @@
+remove styled components
+add scss if necessary (with custom variables)
+fix stylelint
