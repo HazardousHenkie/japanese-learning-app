@@ -3,3 +3,11 @@ add scss if necessary (with custom variables)
 fix stylelint
 move route strings to an utils file
 move router to seperate component
+
+
+// ideas
+add backend for all words and translation
+add automatic translation
+add n2 n3 word list
+add swiping
+add PWA

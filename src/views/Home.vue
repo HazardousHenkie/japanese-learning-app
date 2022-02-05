@@ -1,35 +1,61 @@
 <template>
-    <div class="word">
-        <main class="grid h-screen place-items-center relative">
-            <div class="relative h-96 w-96">
-                <div
-                    class="card bg-white transition shadow-xl w-96 h-96 rounded-3xl absolute bottom-0 z-10 grid place-items-center"
-                >
-                    <div
-                        class="card bg-white shadow-inner h-4/5 w-3/4 rounded-2xl overflow-hidden relative"
-                    >
-                        <h1
-                            class="shadow-md text-xl font-thin text-center text-gray-600 uppercase p-3"
-                        >
-                            漢字
-                        </h1>
+    <div class="relative w-full">
+        <p class="text-center text-4xl text-gray-300 mb-5">
+            {{ step + 1 }} / {{ words.length }}
+        </p>
 
-                        <button
-                            class="card bg-gray-700 hover:bg-gray-600 transition text-white w-full h-1/6 absolute bottom-0 "
-                        >
-                            explenantion
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </main>
+        <button
+            v-if="step !== 0"
+            @keyup.left="previousStep"
+            @click="previousStep"
+        >
+            <font-awesome-icon
+                icon="chevron-left"
+                class="text-4xl text-gray-300 absolute left-4 top-1/2"
+            />
+        </button>
+        <Card :word="words[step]" :step="step" />
+
+        <button
+            v-if="words.length > step + 1"
+            @keyup.right="nextStep"
+            @click="nextStep"
+        >
+            <font-awesome-icon
+                icon="chevron-right"
+                class="text-4xl text-gray-300 absolute right-4 top-1/2"
+            />
+        </button>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref, Ref } from 'vue'
+import Card from '@/components/atoms/Card/Card.vue'
+import WORDS from '../utils/constants'
+
+// center text
 
 export default defineComponent({
-    name: 'Home'
+    name: 'Home',
+    components: { Card },
+    setup() {
+        const words = WORDS
+        const step: Ref<number> = ref(0)
+
+        const previousStep = () => {
+            step.value--
+        }
+        const nextStep = () => {
+            step.value++
+        }
+
+        return {
+            words,
+            step,
+            previousStep,
+            nextStep
+        }
+    }
 })
 </script>
