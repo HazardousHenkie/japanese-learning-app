@@ -25,12 +25,10 @@
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
-    "vue-styled-components": "^1.6.0",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",
-    "@types/styled-components": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -50,11 +48,11 @@
     "eslint-plugin-vue-a11y": "^0.0.31",
     "pre-commit": "^1.2.2",
     "prettier": "^1.19.1",
-    "styled-components": "^5.2.1",
+    "sass": "^1.32.6",
+    "sass-loader": "10.1.1",
     "stylelint": "^13.9.0",
     "stylelint-config-recommended": "^3.0.0",
-    "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.10.0",
+    "stylelint-config-sass-guidelines": "^7.1.0",
     "typescript": "~3.9.3",
     "vue-jest": "^5.0.0-0"
   }

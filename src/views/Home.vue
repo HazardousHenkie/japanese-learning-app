@@ -34,8 +34,6 @@ import { defineComponent, ref, Ref } from 'vue'
 import Card from '@/components/atoms/Card/Card.vue'
 import WORDS from '../utils/constants'
 
-// center text
-
 export default defineComponent({
     name: 'Home',
     components: { Card },
